@@ -1,34 +1,103 @@
-# Puertas Premium by Ilitia — sitio web
+# Puertas Premium by Ilitia
 
-Sitio estático: HTML, CSS y JavaScript sin dependencias ni instalación.
+Sitio web de **Puertas Premium**, la línea de puertas pivotantes de panel de aluminio de **Ilitia — Puertas, ventanas y más**.
 
-## Cómo abrirlo en Visual Studio Code
-1. Descomprime la carpeta `puertas-premium` y ábrela en VS Code (Archivo → Abrir carpeta).
-2. Instala la extensión **Live Server** (de Ritwick Dey).
-3. Clic derecho sobre `index.html` → **Open with Live Server**. Se abre en tu navegador y se recarga al guardar.
+Es una página animada y responsiva. Muestra proyectos reales y tiene un configurador interactivo para que el cliente diseñe su puerta y la cotice por WhatsApp en un clic.
 
-También puedes abrir `index.html` con doble clic, pero con Live Server se ve igual que publicado.
+---
 
-## Estructura
+## Características
+
+- **Portada animada** con fotos que se alternan con un acercamiento lento.
+- **Galería de proyectos reales** (14 puertas). Las que tienen varias fotos las alternan con un fundido suave.
+- **Configurador de puertas**
+  - 23 modelos de diseño
+  - 30 colores en 4 familias: semibrillo, metalizados, maderas y texturizados
+  - 4 configuraciones: sola, con fijo superior, con fijo lateral, o lateral y superior
+  - Herrajes: jaladera, jaladera con chapa digital, o manija
+  - La puerta gira sobre su eje, como un sistema pivotante real
+  - El botón **Cotizar esta puerta** abre WhatsApp con la combinación ya escrita
+- **Secciones informativas** sobre cerraduras y el sistema pivotante.
+- **Contacto** por WhatsApp, botón flotante y redes sociales (Facebook, Instagram, TikTok y correo).
+- **Diseño responsivo**: computadora, tablet (≤ 1100 px) y celular (≤ 820 px), con menú de hamburguesa, carrusel deslizable y vista previa fija de la puerta en el configurador.
+
+## Tecnologías
+
+- HTML5
+- CSS3 (animaciones con `@keyframes` y media queries)
+- JavaScript puro, sin frameworks ni dependencias
+- Google Fonts: Cormorant Garamond, Roboto Slab e Inter
+
+## Estructura del proyecto
+
 ```
-index.html        Estructura y textos de todas las secciones
-css/styles.css    Animaciones y reglas responsivas (celular ≤ 820 px, tablet ≤ 1100 px)
-js/main.js        Menú móvil, galería de proyectos y configurador de puertas
-img/              Fotos (ya sin logos) y logo claro de Ilitia
+puertas-premium/
+├── index.html        # Estructura y textos de todas las secciones
+├── css/
+│   └── styles.css    # Animaciones y reglas responsivas
+├── js/
+│   └── main.js       # Menú móvil, galería y configurador
+└── img/              # Fotografías y logo
 ```
 
-## Lo que falta completar (búscalo con Ctrl+F)
-- `[LINK DE FACEBOOK]`
-- `[LINK DE INSTAGRAM]`
-- `[LINK DE TIKTOK]`
-- `[CORREO ELECTRÓNICO]` (aparece como `mailto:[CORREO ELECTRÓNICO]` y como texto)
+## Correr en local
 
-## Cambios frecuentes
-- **Número de WhatsApp:** constante `WHATSAPP` al inicio de `js/main.js` y los enlaces `wa.me/527717474258` en `index.html`.
-- **Agregar un proyecto a la galería:** copia la foto a `img/` y agrega una línea en la lista `PROJECTS` de `js/main.js`:
-  `['Título', 'Detalle', ['foto-1.jpg', 'foto-2.jpg']]` (con 2 o 3 fotos se alternan solas).
-- **Colores del configurador:** lista `GROUPS` en `js/main.js` (nombre y color hexadecimal).
-- **Modelos de puerta:** lista `MODELS` en `js/main.js`; cada línea es `V(x)` vertical, `H(y)` horizontal o `D(x1,y1,x2,y2)` diagonal, en % de la hoja.
+Clona el repositorio:
 
-## Publicarlo
-Sube la carpeta completa a tu hosting (cPanel, Netlify, Vercel, GitHub Pages…) con `index.html` en la raíz.
+```bash
+git clone https://github.com/Ximena1906/puertas-premium.git
+cd puertas-premium
+```
+
+Luego usa cualquiera de estas opciones:
+
+| Opción | Comando | Dirección |
+|---|---|---|
+| Node | `npx serve .` | http://localhost:3000 |
+| Python | `python -m http.server 8000` | http://localhost:8000 |
+| VS Code | Extensión **Live Server** → clic derecho en `index.html` → *Open with Live Server* | http://127.0.0.1:5500 |
+
+## Despliegue
+
+Es un sitio estático, así que no necesita build.
+
+**Netlify**: *Add new site → Import from GitHub*
+- Build command: *(vacío)*
+- Publish directory: `.`
+
+**Render**: *New → Static Site*
+- Build command: `echo "sin build"`
+- Publish directory: `.`
+
+Cada `git push` a la rama `main` vuelve a publicar el sitio automáticamente.
+
+## Personalización
+
+Todo lo editable del configurador y la galería está en `js/main.js`:
+
+| Qué cambiar | Dónde |
+|---|---|
+| Número de WhatsApp | Constante `WHATSAPP` y enlaces `wa.me/...` en `index.html` |
+| Proyectos de la galería | Lista `PROJECTS`: `['Título', 'Detalle', ['foto-1.jpg', 'foto-2.jpg']]` |
+| Colores | Lista `GROUPS`: `['Nombre', '#HEX']` |
+| Modelos de puerta | Lista `MODELS`: `V(x)` vertical, `H(y)` horizontal, `D(x1,y1,x2,y2)` diagonal, en % de la hoja |
+
+Para agregar un proyecto, copia la foto en `img/` y añade una línea a `PROJECTS`. Si le pones 2 o 3 fotos, se alternan solas.
+
+## Pendientes
+
+- [ ] Link de Facebook
+- [ ] Link de Instagram
+- [ ] Link de TikTok
+- [ ] Correo electrónico
+- [ ] Dominio personalizado
+
+## Contacto
+
+**Ilitia — Puertas, ventanas y más**
+- WhatsApp: [771 747 4258](https://wa.me/527717474258)
+- Web: [www.ilitia.com.mx](https://www.ilitia.com.mx)
+
+---
+
+Las imágenes de la portada son ilustrativas. Las de la galería corresponden a instalaciones de Ilitia.
