@@ -75,8 +75,8 @@
   const GROUPS = [
     { name: 'Semibrillo', k: 's', items: [['Negro', '#0B0B0C'], ['Blanco porcelana', '#EEEEEC'], ['Bronce', '#4E3D2B'], ['Azul cobalto', '#15213B'], ['Azul marino', '#0E3570'], ['Rojo', '#E22B26'], ['Rojo oscuro', '#9E0C16'], ['Naranja mate', '#E15613'], ['Amarillo', '#F7B10A']] },
     { name: 'Metalizados', k: 'm', items: [['Gris oscuro', '#5E605D'], ['Bronce 1001', '#857C5B'], ['Bronce 1002', '#7C6A5B'], ['Gris peltre', '#737476'], ['Café metálico', '#9A6048'], ['Jade plata', '#96A9A0'], ['Champaña', '#D4C7B6'], ['Plata dorado', '#A09684'], ['Arena dorado', '#C0A880']] },
-    { name: 'Maderas', k: 'w', items: [['Sucupira', '#5F5545'], ['Castaña', '#7A3F22'], ['Caoba', '#B0662F'], ['Imbuia', '#2F2219'], ['Nogal', '#5D4736'], ['Roble miel', '#BBA88B']] },
-    { name: 'Texturizados', k: 'i', items: [['Roja texturizada', '#3C1D12', 'roja'], ['Maple texturizada', '#A46922', 'maple'], ['Chocolate texturizada', '#3C3023', 'chocolate'], ['Nogal texturizada', '#38211A', 'nogal'], ['Madera clara texturizada', '#967A51', 'clara'], ['Madera oscura texturizada', '#44372E', 'oscura']] }
+    { name: 'Maderas', k: 'w', items: [['Madera roja', '#6B2A1F'], ['Nogal', '#7A3F22'], ['Maple', '#B0662F'], ['Chocolate', '#2F2219'], ['Madera oscura', '#5D4736'], ['Madera clara', '#BBA88B']] },
+    { name: 'Maderas texturizadas', k: 'i', items: [['Roja texturizada', '#3C1D12', 'roja'], ['Maple texturizada', '#A46922', 'maple'], ['Chocolate texturizada', '#3C3023', 'chocolate'], ['Nogal texturizada', '#38211A', 'nogal'], ['Madera clara texturizada', '#967A51', 'clara'], ['Madera oscura texturizada', '#44372E', 'oscura']] }
   ];
   const TEXTURE = {
     s: 'linear-gradient(115deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.16) 45%,rgba(255,255,255,0) 60%),',
