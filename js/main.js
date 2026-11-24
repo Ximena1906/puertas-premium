@@ -76,7 +76,7 @@
     { name: 'Semibrillo', k: 's', items: [['Negro', '#0B0B0C'], ['Blanco porcelana', '#EEEEEC'], ['Bronce', '#4E3D2B'], ['Azul cobalto', '#15213B'], ['Azul marino', '#0E3570'], ['Rojo', '#E22B26'], ['Rojo oscuro', '#9E0C16'], ['Naranja mate', '#E15613'], ['Amarillo', '#F7B10A']] },
     { name: 'Metalizados', k: 'm', items: [['Gris oscuro', '#5E605D'], ['Bronce 1001', '#857C5B'], ['Bronce 1002', '#7C6A5B'], ['Gris peltre', '#737476'], ['Café metálico', '#9A6048'], ['Jade plata', '#96A9A0'], ['Champaña', '#D4C7B6'], ['Plata dorado', '#A09684'], ['Arena dorado', '#C0A880']] },
     { name: 'Maderas', k: 'w', items: [['Sucupira', '#5F5545'], ['Castaña', '#7A3F22'], ['Caoba', '#B0662F'], ['Imbuia', '#2F2219'], ['Nogal', '#5D4736'], ['Roble miel', '#BBA88B']] },
-    { name: 'Texturizados', k: 't', items: [['Concreto zinc', '#BEBEB9'], ['Corten', '#8F4421'], ['Acero corten oxidado', '#4E2B23'], ['Concreto lavado', '#AAB3B9'], ['Gris oscuro texturizado', '#4D4E50'], ['Gris antracita', '#2F3032']] }
+    { name: 'Texturizados', k: 'i', items: [['Roja texturizada', '#3C1D12', 'roja'], ['Maple texturizada', '#A46922', 'maple'], ['Chocolate texturizada', '#3C3023', 'chocolate'], ['Nogal texturizada', '#38211A', 'nogal'], ['Madera clara texturizada', '#967A51', 'clara'], ['Madera oscura texturizada', '#44372E', 'oscura']] }
   ];
   const TEXTURE = {
     s: 'linear-gradient(115deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.16) 45%,rgba(255,255,255,0) 60%),',
@@ -84,7 +84,8 @@
     w: 'repeating-linear-gradient(178deg,rgba(0,0,0,.13) 0 2px,transparent 2px 7px),repeating-linear-gradient(181deg,rgba(255,255,255,.07) 0 1px,transparent 1px 13px),linear-gradient(90deg,rgba(0,0,0,.12),rgba(255,255,255,.06) 50%,rgba(0,0,0,.12)),',
     t: 'radial-gradient(rgba(0,0,0,.22) 1px,transparent 1.6px) 0 0/6px 6px,radial-gradient(rgba(255,255,255,.14) 1px,transparent 1.6px) 3px 2px/9px 9px,'
   };
-  const bgFor = (k, c) => TEXTURE[k] + c;
+  // 'i' = textura fotográfica de la muestra real (img/tx-*.jpg)
+  const bgFor = (k, c, tx) => k === 'i' ? `url(img/tx-${tx}.jpg) center / cover no-repeat, ${c}` : TEXTURE[k] + c;
   const lum = (h) => { const n = parseInt(h.slice(1), 16); return (0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) / 255; };
   const CONFIGS = ['Sola', 'Con fijo superior', 'Con fijo lateral', 'Fijo lateral y superior'];
   const HARDWARE = ['Jaladera', 'Jaladera + chapa digital', 'Manija'];
@@ -98,7 +99,7 @@
     const g = GROUPS[state.group];
     const col = g.items[Math.min(state.color, g.items.length - 1)];
     const num = String(state.model + 1).padStart(2, '0');
-    const finishBg = bgFor(g.k, col[1]);
+    const finishBg = bgFor(g.k, col[1], col[2]);
     const lineColor = lum(col[1]) < 0.16 ? 'rgba(255,255,255,.2)' : 'rgba(0,0,0,.5)';
 
     $('models').innerHTML = MODELS.map((m, i) => {
@@ -109,7 +110,7 @@
     }).join('');
 
     $('groups').innerHTML = GROUPS.map((x, i) => `<button type="button" data-group="${i}" aria-pressed="${i === state.group}" style="${pillBase}min-height:40px;font-size:13px;${pill(i === state.group)}">${x.name}</button>`).join('');
-    $('finishes').innerHTML = g.items.map((x, i) => `<button type="button" class="chip" data-color="${i}" aria-label="${x[0]}" title="${x[0]}" aria-pressed="${x === col}" style="width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,0.18);cursor:pointer;background:${bgFor(g.k, x[1])};box-shadow:${x === col ? '0 0 0 3px #161616, 0 0 0 5px #F4B350' : 'none'}"></button>`).join('');
+    $('finishes').innerHTML = g.items.map((x, i) => `<button type="button" class="chip" data-color="${i}" aria-label="${x[0]}" title="${x[0]}" aria-pressed="${x === col}" style="width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,0.18);cursor:pointer;background:${bgFor(g.k, x[1], x[2])};box-shadow:${x === col ? '0 0 0 3px #161616, 0 0 0 5px #F4B350' : 'none'}"></button>`).join('');
     $('configs').innerHTML = CONFIGS.map((x, i) => `<button type="button" data-cfg="${i}" aria-pressed="${i === state.cfg}" style="${pillBase}${pill(i === state.cfg)}">${x}</button>`).join('');
     $('hardware').innerHTML = HARDWARE.map((x, i) => `<button type="button" data-hw="${i}" aria-pressed="${i === state.hw}" style="${pillBase}${pill(i === state.hw)}">${x}</button>`).join('');
 
