@@ -40,57 +40,6 @@ puertas-premium/
 └── img/              # Fotografías y logo
 ```
 
-## Correr en local
-
-Clona el repositorio:
-
-```bash
-git clone https://github.com/Ximena1906/puertas-premium.git
-cd puertas-premium
-```
-
-Luego usa cualquiera de estas opciones:
-
-| Opción | Comando | Dirección |
-|---|---|---|
-| Node | `npx serve .` | http://localhost:3000 |
-| Python | `python -m http.server 8000` | http://localhost:8000 |
-| VS Code | Extensión **Live Server** → clic derecho en `index.html` → *Open with Live Server* | http://127.0.0.1:5500 |
-
-## Despliegue
-
-Es un sitio estático, así que no necesita build.
-
-**Netlify**: *Add new site → Import from GitHub*
-- Build command: *(vacío)*
-- Publish directory: `.`
-
-**Render**: *New → Static Site*
-- Build command: `echo "sin build"`
-- Publish directory: `.`
-
-Cada `git push` a la rama `main` vuelve a publicar el sitio automáticamente.
-
-## Personalización
-
-Todo lo editable del configurador y la galería está en `js/main.js`:
-
-| Qué cambiar | Dónde |
-|---|---|
-| Número de WhatsApp | Constante `WHATSAPP` y enlaces `wa.me/...` en `index.html` |
-| Proyectos de la galería | Lista `PROJECTS`: `['Título', 'Detalle', ['foto-1.jpg', 'foto-2.jpg']]` |
-| Colores | Lista `GROUPS`: `['Nombre', '#HEX']` |
-| Modelos de puerta | Lista `MODELS`: `V(x)` vertical, `H(y)` horizontal, `D(x1,y1,x2,y2)` diagonal, en % de la hoja |
-
-Para agregar un proyecto, copia la foto en `img/` y añade una línea a `PROJECTS`. Si le pones 2 o 3 fotos, se alternan solas.
-
-## Pendientes
-
-- [ ] Link de Facebook
-- [ ] Link de Instagram
-- [ ] Link de TikTok
-- [ ] Correo electrónico
-- [ ] Dominio personalizado
 
 ## Contacto
 
